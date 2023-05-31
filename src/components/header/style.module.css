@@ -1,0 +1,77 @@
+header {
+  height: 75px;
+  padding: 10px 65px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ebf2f2;
+}
+
+.header_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_logo img {
+  width: 300px;
+}
+
+.header_navigation-list {
+  display: flex;
+  gap: 20px;
+}
+
+.header_navigation-item {
+  position: relative;
+  padding: 20px 6px;
+  display: flex;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.header_navigation-link {
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 55px;
+  left: -15px;
+  min-width: 150px;
+  display: none;
+  padding: 15px 20px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 5px 30px 0 rgba(108, 135, 135, 0.5);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.menu {
+  cursor: pointer;
+  display: none;
+}
+
+.dropdown-content a:hover {
+  color: #6db33f;
+}
+
+.header_navigation-item:hover .dropdown-content {
+  display: block;
+}
+
+.header_navigation-item::after {
+  content: url(../../assets/icons/down_arrow.svg);
+  top: 0;
+  left: 100px;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
