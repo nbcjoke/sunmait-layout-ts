@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { FunctionComponent } from "react";
 
-import { opportunities } from "../../mocks/opportunities";
 import { OpportunityModel } from "../../models/opportunityModel";
 
 import styles from "./style.module.css";
 
-export const Opportunities = () => {
-  const [opportunitiesItems, setOpportunitiesItems] =
-    useState<OpportunityModel[]>(opportunities);
+interface OpportunitiesProps {
+  opportunityItems: OpportunityModel[];
+}
 
-  console.log(styles);
+export const Opportunities: FunctionComponent<OpportunitiesProps> = ({
+  opportunityItems,
+}) => {
   return (
     <div className={styles.opportunities_container}>
-      {opportunitiesItems.map((opportunityItem) => {
+      {opportunityItems.map((opportunityItem) => {
         return (
           <div className={styles.opportunity_item} key={opportunityItem.id}>
             <div className={styles["opportunity_item-image"]}>
