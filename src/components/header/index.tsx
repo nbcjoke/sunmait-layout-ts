@@ -1,3 +1,6 @@
+import { Navigation } from "./navigation";
+import { Menu } from "./menu";
+
 import styles from "./style.module.css";
 import logo from "../../assets/logo.svg";
 
@@ -10,12 +13,11 @@ export const Header = () => {
             <img src={logo} alt="logo" />
           </a>
         </div>
-        <nav className={styles.header_navigation}>
-          <ul className={styles["header_navigation-list"]}></ul>
-        </nav>
+        <Navigation />
         <div className={styles.sidenav}>
           <div className={styles["sidenav-navigation"]}></div>
         </div>
+        <Menu />
       </div>
     </header>
   );

@@ -3,4 +3,5 @@ export interface NavigationModel {
   label: string;
   link: string;
   children?: NavigationModel[];
+  expanded?: boolean;
 }

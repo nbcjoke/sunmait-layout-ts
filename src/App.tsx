@@ -15,9 +15,7 @@ export const App = () => {
   const debouncedValue = useDebounce(value, 300);
 
   useEffect(() => {
-    const result = opportunities;
-
-    const filtered = result.filter((item) => {
+    const filtered = opportunities.filter((item) => {
       return (
         item.title
           .toLocaleLowerCase()
@@ -53,9 +51,10 @@ export const App = () => {
           onChange={(e) => setValue(e.target.value)}
         />
         {!opportunityItems.length ? (
-          <h2 style={{ textAlign: "center" }}>Error</h2>
-        ) : null}
-        <Opportunities opportunityItems={opportunityItems} />
+          <h2 className="error_title">No results</h2>
+        ) : (
+          <Opportunities opportunityItems={opportunityItems} />
+        )}
       </div>
     </div>
   );
