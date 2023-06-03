@@ -33,39 +33,37 @@ export const Menu = () => {
 
   return (
     <>
-      {open && (
-        <div className={styles.sidenav} style={open ? { height: "100%" } : {}}>
-          <p className={styles.closebtn} onClick={closeNav}>
-            &times;
-          </p>
-          <div className={styles["sidenav-navigation"]}>
-            {navigation.map((item) => {
-              return (
-                <div
-                  key={item.id}
-                  className={`${styles["navigation-item"]} ${
-                    item.expanded ? styles["expanded"] : ""
-                  }`}
-                >
-                  <a href={item.link} onClick={() => toggleExpanded(item)}>
-                    {item.label}
-                  </a>
+      <div className={styles.sidenav} style={open ? { height: "100%" } : {}}>
+        <p className={styles.closebtn} onClick={closeNav}>
+          &times;
+        </p>
+        <div className={styles["sidenav-navigation"]}>
+          {navigation.map((item) => {
+            return (
+              <div
+                key={item.id}
+                className={`${styles["navigation-item"]} ${
+                  item.expanded ? styles["expanded"] : ""
+                }`}
+              >
+                <a href={item.link} onClick={() => toggleExpanded(item)}>
+                  {item.label}
+                </a>
 
-                  <div className={styles.nested}>
-                    {item.children?.map((child) => {
-                      return (
-                        <a key={child.id} href={child.link}>
-                          {child.label}
-                        </a>
-                      );
-                    })}
-                  </div>
+                <div className={styles.nested}>
+                  {item.children?.map((child) => {
+                    return (
+                      <a key={child.id} href={child.link}>
+                        {child.label}
+                      </a>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
-      )}
+      </div>
       <div className={styles.menu} onClick={openNav}>
         <img src={menu} alt="menu" />
       </div>

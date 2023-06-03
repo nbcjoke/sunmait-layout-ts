@@ -5,6 +5,8 @@ import { opportunities } from "../../mocks/opportunities";
 import { OpportunityCard } from "./opportunitiesCard";
 import { OpportunityModel } from "../../models/opportunityModel";
 
+import styles from "./style.module.css";
+
 export const Opportunities = () => {
   const [value, setValue] = useState("");
   const [opportunityItems, setOpportunityItems] =
@@ -27,17 +29,17 @@ export const Opportunities = () => {
   }, [debouncedValue]);
 
   return (
-    <div className="opportunities_wrapper">
+    <div className={styles.opportunities_wrapper}>
       <input
         placeholder="Search..."
-        className="input"
+        className={styles.input}
         type="search"
         name="search"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
       {!opportunityItems.length ? (
-        <h2 className="error_title">No results</h2>
+        <h2 className={styles.error_title}>No results</h2>
       ) : (
         <OpportunityCard opportunityItems={opportunityItems} />
       )}

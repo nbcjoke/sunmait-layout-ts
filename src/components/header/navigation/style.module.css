@@ -53,3 +53,25 @@
 .header_navigation-item:hover .dropdown-content {
   display: block;
 }
+
+@media only screen and (min-width: 1000px) and (max-width: 1200px) {
+  .header_navigation-list {
+    gap: 5px;
+  }
+
+  .header_navigation-item {
+    gap: 0;
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 999px) {
+  .header_navigation {
+    display: none;
+  }
+}
+
+@media (max-width: 799px) {
+  .header_navigation {
+    display: none;
+  }
+}

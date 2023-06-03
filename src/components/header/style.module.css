@@ -23,3 +23,21 @@ header {
   width: 20px;
   height: 20px;
 }
+
+@media only screen and (min-width: 1000px) and (max-width: 1200px) {
+  header {
+    padding: 10px 30px;
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 999px) {
+  header {
+    padding: 10px 28px;
+  }
+}
+
+@media (max-width: 799px) {
+  header {
+    padding: 10px 15px;
+  }
+}
