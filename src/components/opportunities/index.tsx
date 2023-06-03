@@ -1,35 +1,46 @@
-import { FunctionComponent } from "react";
+import { useState, useEffect } from "react";
 
+import { useDebounce } from "../../hooks/useDebounce";
+import { opportunities } from "../../mocks/opportunities";
+import { OpportunityCard } from "./opportunitiesCard";
 import { OpportunityModel } from "../../models/opportunityModel";
 
-import styles from "./style.module.css";
+export const Opportunities = () => {
+  const [value, setValue] = useState("");
+  const [opportunityItems, setOpportunityItems] =
+    useState<OpportunityModel[]>(opportunities);
+  const debouncedValue = useDebounce(value, 300);
 
-interface OpportunitiesProps {
-  opportunityItems: OpportunityModel[];
-}
+  useEffect(() => {
+    const filtered = opportunities.filter((item) => {
+      return (
+        item.title
+          .toLocaleLowerCase()
+          .includes(debouncedValue.toLocaleLowerCase()) ||
+        item.description
+          .toLocaleLowerCase()
+          .includes(debouncedValue.toLocaleLowerCase())
+      );
+    });
 
-export const Opportunities: FunctionComponent<OpportunitiesProps> = ({
-  opportunityItems,
-}) => {
+    setOpportunityItems(filtered);
+  }, [debouncedValue]);
+
   return (
-    <div className={styles.opportunities_container}>
-      {opportunityItems.map((opportunityItem) => {
-        return (
-          <div className={styles.opportunity_item} key={opportunityItem.id}>
-            <div className={styles["opportunity_item-image"]}>
-              <img src={opportunityItem.img} alt="Spring Boot" />
-            </div>
-            <div className={styles["opportunity_item-info"]}>
-              <h1 className={styles["opportunity_item-title"]}>
-                {opportunityItem.title}
-              </h1>
-              <p className={styles["opportunity_item-description"]}>
-                {opportunityItem.description}
-              </p>
-            </div>
-          </div>
-        );
-      })}
+    <div className="opportunities_wrapper">
+      <input
+        placeholder="Search..."
+        className="input"
+        type="search"
+        name="search"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      {!opportunityItems.length ? (
+        <h2 className="error_title">No results</h2>
+      ) : (
+        <OpportunityCard opportunityItems={opportunityItems} />
+      )}
     </div>
   );
 };
